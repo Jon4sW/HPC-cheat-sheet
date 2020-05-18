@@ -11,6 +11,8 @@ Jonas Weber
 
 [myJam website][myJam]
 
+[HHU VPN setup](https://www.zim.hhu.de/services-des-zim/netz/netzzugang/vpn-von-zu-hause-ins-uni-netz.html)
+
 
 ## Connect with terminal
 
@@ -28,7 +30,7 @@ And add the lines:
 
 	Host hilbert
 	HostName hpc.rz.uni-duesseldorf.de
-	User [username]
+	User <username>
 
 This way you can just type:
 
@@ -44,20 +46,20 @@ You can mount a HPC directory to your filesystem:
 
 Example:
 
-	sshfs joweb106@hpc.rz.uni-duesseldorf.de:/gpfs/scratch/joweb106 Documents/hilbert3/
+	sshfs <username>@hpc.rz.uni-duesseldorf.de:/gpfs/scratch/<username> Documents/hilbert3/
 
-Or use [Filezilla](https://filezilla-project.org/)
+Or use [Filezilla](https://filezilla-project.org/).
 
-Also look at [this HPC wiki post](https://wiki.hhu.de/display/HPC/Filesysteme+mounten)
+Also, look at [this HPC wiki post](https://wiki.hhu.de/display/HPC/Filesysteme+mounten).
 
 ### Graphical Session
 
-[request one here](https://view-2018.hpc.rz.uni-duesseldorf.de/enginframe/vdi/vdi.xml?_uri=//com.enginframe.interactive/list.sessions)
+Request one [here](https://view-2018.hpc.rz.uni-duesseldorf.de/enginframe/vdi/vdi.xml?_uri=//com.enginframe.interactive/list.sessions).
 
 
 ## Your home directory
 
-Work in `/gpfs/scratch/username`.
+Work in `/gpfs/scratch/<username>`.
 
 
 
@@ -65,7 +67,7 @@ Work in `/gpfs/scratch/username`.
 
 You can load specific software with modules:
 	
-	module load module-name
+	module load <module-name>
 
 List of all modules:
 
@@ -84,21 +86,21 @@ For conda with Snakemake (different miniconda module):
 
 One can use [screen] to start a new screen session
 
- 	screen                  # without name or
-	screen -S sessionname   # with name
+ 	screen                   # without name or
+	screen -S <sessionname>  # with name
 
 Use `ctrl+a+d` to detach from this screen. 
 
 Reconnect using:
 	
-	screen -r
-	screen -r sessionname # with specific name
+	screen -r                # without name or
+	screen -r <sessionname>  # with name
 
 ## Interactive session
 
 To get an interactive session use the `qsub` command when connected to the HPC. Make sure to first call `screen` so you can detach and reconnect from/to your session. You can monitor your jobs with [myJam]. You might need to catch the output in some logfile. Tips for this can be found below. 
 
-	qsub -A <project-name> -I -l select=1:ncpus=<number>:mem=<numberG> -l walltime=<h>:<mm>:<ss>
+	qsub -A <project-name> -I -l select=1:ncpus=<number>:mem=<number>G -l walltime=<h>:<mm>:<ss>
 
 Example:
 
